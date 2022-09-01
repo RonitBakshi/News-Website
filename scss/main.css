@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.start {
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(lightseagreen, darkblue);
+  display: flex;
+  align-items: flex-end;
+  color: white;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+.start div {
+  margin: 3rem;
+}
+.start h1 {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+.start p {
+  font-size: 1rem;
+  width: 10rem;
+}
+
+.header {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.header h1 {
+  font-size: 4rem;
+  margin: 1rem;
+}
+.header ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+.header ul li {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.content {
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.maingrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.firstcard {
+  display: flex;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.firstcard__right {
+  flex: 3;
+  border-radius: 1rem 0 0 1rem;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-color: lightseagreen;
+  color: white;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+.firstcard__backdrop {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  border-radius: 1rem 0 0 1rem;
+  padding: 1rem;
+  height: 100%;
+}
+.firstcard__datetime {
+  display: flex;
+  justify-content: space-between;
+}
+.firstcard__date, .firstcard__time {
+  font-size: 1rem;
+}
+.firstcard__title {
+  font-size: 1.5rem;
+  margin-top: 6rem;
+}
+.firstcard__left {
+  flex: 2;
+  margin: 1rem;
+}
+.firstcard__description {
+  margin-bottom: 1rem;
+}
+.firstcard__content {
+  font-size: 1rem;
+}
+
+.newscard {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+.newscard__top {
+  border-radius: 1rem 1rem 0 0;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-color: lightseagreen;
+  color: white;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+.newscard__backdrop {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  border-radius: 1rem 1rem 0 0;
+  padding: 1rem;
+}
+.newscard__datetime {
+  display: flex;
+  justify-content: space-between;
+}
+.newscard__date, .newscard__time {
+  font-size: 1rem;
+}
+.newscard__title {
+  margin-top: 6rem;
+  font-size: 1.5rem;
+}
+.newscard__description {
+  font-size: 1rem;
+  margin: 1rem;
+}/*# sourceMappingURL=main.css.map */
