@@ -5,106 +5,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Righteous&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <link rel="stylesheet" href="scss/main.css">
     
     <title>main page</title>
 </head>
 <body>
     <div class="main">
-        
         <div class="start">
-            <div>
+            <video id="background-video" autoplay loop muted poster="assets/City - 18241.mp4">
+                <source src="assets/City - 18241.mp4" type="video/mp4">
+            </video>
+            <div class="start__backdrop"></div>
+            <div class="start__content">
                 <h1>
-                    Lorem, ipsum dolor.
+                    Egregore, Daily News.
                 </h1>
-                <p href="">
+                <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias enim doloremque repellendus consequatur labore impedit nisi unde eligendi ipsum earum.
                 </p>
             </div>
         </div>
 
-        <header class="header">
-            <h1 class="header-text">
-                Lorem, ipsum dolor.
-            </h1>
-            <ul>
-                <li>
-                    business
-                </li>
-                <li>
-                    entertainment
-                </li>
-                <li style="background-color: lightgrey;">
-                    general
-                </li>
-                <li>
-                    health
-                </li>
-                <li>
-                    science
-                </li>
-                <li>
-                    sports
-                </li>
-                <li>
-                    technology                
-                </li>
-            </ul>
-        </header>
-
-        <div class="content">
-
-            <template>
-                <div class="firstcard">
-                    <div class="firstcard__right">
-                        <div class="firstcard__backdrop">
-                            <div class="firstcard__datetime">
-                                <p class="firstcard__date">
-                                    2020-04-21
-                                </p>
-                                <p class="firstcard__time">
-                                    06:18
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="firstcard__left">
-                        <p class="firstcard__description"> 
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum quo molestiae, dolor repudiandae optio sed cum ipsa illo fuga ab.
-                        </p>
-                        <p class="firstcard__content">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio minima iusto libero ipsa earum, laborum possimus ratione nisi nostrum incidunt ad amet inventore sequi cumque perferendis eligendi sed. Tempore nobis reprehenderit necessitatibus repellat inventore ab accusantium ex voluptas culpa dicta. Eligendi dolore commodi dignissimos. Fugit, atque recusandae asperiores exercitationem rerum tempore aut obcaecati autem voluptatem optio molestiae doloribus, quas a et qui blanditiis officiis quidem quam sequi id animi voluptas amet. Minima vitae magnam adipisci quidem tenetur similique, id eaque consequuntur! Rem omnis voluptatibus a suscipit consectetur ab sint voluptates at. Dolorum maxime est maiores at consectetur sequi mollitia quidem repudiandae saepe aut ullam, voluptates, molestias inventore minima, in eligendi eos totam tempora laboriosam fugit aperiam. Quis modi voluptatem quaerat harum. Ratione nesciunt architecto fugiat dolore tenetur a exercitationem tempore, laudantium commodi reprehenderit dolorum alias, est facere soluta voluptatum dolorem ducimus illo natus. Optio atque velit hic. At, odio. Consectetur!
-                        </p>
-                    </div>
+        <div class="page">
+            <header class="header">
+                <div>
+                    <h1 class="header-text">
+                        Egregore, Daily News.
+                    </h1>
+                    <button class="material-icons">
+                        menu
+                    </button>
                 </div>
-            </template>
-            
-            <div class="maingrid">
-                <template>
-                    <div class="newscard">
-                        <div class="newscard__top">
-                            <div class="newscard__backdrop">
-                                <div class="newscard__datetime">
-                                    <p class="newscard__date">
-                                        2020-04-21
-                                    </p>
-                                    <p class="newscard__time">
-                                        06:18
-                                    </p>
-                                </div>
-                                <h2 class="newscard__title"> 
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, impedit.
-                                </h2> 
-                            </div>
-                        </div>
-                        <p class="newscard__description">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum qui ipsam fugit eaque placeat debitis in aut enim repudiandae eligendi?
-                        </p>
-                    </div>
-                </template>
+                <ul class="header__list header__list--close">
+                    <li>
+                        business
+                    </li>
+                    <li>
+                        entertainment
+                    </li>
+                    <li>
+                        general
+                    </li>
+                    <li>
+                        health
+                    </li>
+                    <li>
+                        science
+                    </li>
+                    <li>
+                        sports
+                    </li>
+                    <li>
+                        technology                
+                    </li>
+                </ul>
+            </header>
+    
+            <div class="content">
+    
+                <div class="cardcontainer">
+                </div>
+                
+                <div class="maingrid">
+                </div>
             </div>
         </div>
-
     </div>
 </body>
 <script src="javascript/main.js"></script>

@@ -2,58 +2,151 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: #06113C;
+}
+a:visited {
+  color: #06113C;
+}
+
+.main {
+  color: #06113C;
+}
+
+@-webkit-keyframes firstclick {
+  from {
+    height: 100vh;
+  }
+  to {
+    height: 0vh;
+    display: none;
+  }
+}
+
+@keyframes firstclick {
+  from {
+    height: 100vh;
+  }
+  to {
+    height: 0vh;
+    display: none;
+  }
+}
 .start {
+  position: relative;
   height: 100vh;
   width: 100%;
-  background-image: linear-gradient(lightseagreen, darkblue);
   display: flex;
   align-items: flex-end;
-  color: white;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  color: #EEEEEE;
+  text-shadow: 0 0 2px #06113C;
+  background-image: url("/assets/City - 18241.mp4");
 }
-.start div {
+.start video {
+  position: absolute;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100vh;
+  width: 100vw;
+}
+.start__backdrop {
+  position: absolute;
+  background-image: linear-gradient(rgba(6, 17, 60, 0), #06113c);
+  height: 100%;
+  width: 100%;
+}
+.start__content {
+  position: absolute;
   margin: 3rem;
 }
 .start h1 {
+  color: #FF8C32;
   font-size: 5rem;
   margin-bottom: 1rem;
+  font-family: "Righteous", cursive;
 }
 .start p {
   font-size: 1rem;
-  width: 10rem;
+  max-width: 15rem;
+}
+.start--close {
+  -webkit-animation: firstclick 3s forwards ease-in-out;
+          animation: firstclick 3s forwards ease-in-out;
+}
+
+.page {
+  display: none;
+}
+.page--active {
+  display: inline;
 }
 
 .header {
-  background-color: white;
+  background-color: #06113C;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(6, 17, 60, 0.1764705882);
+  color: #EEEEEE;
+}
+.header div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  width: 100%;
+}
+.header button {
+  color: #FF8C32;
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
 }
 .header h1 {
+  color: #FF8C32;
+  cursor: pointer;
   font-size: 4rem;
-  margin: 1rem;
+  font-family: "Righteous", cursive;
 }
-.header ul {
+.header__list {
   width: 100%;
   list-style: none;
   display: flex;
   justify-content: space-around;
 }
-.header ul li {
+.header__list li {
   display: flex;
   flex: 1;
   height: 100%;
   align-items: center;
   justify-content: center;
   font-size: 1rem;
-  padding: 0.5rem;
+  height: 3rem;
+  min-height: 2.5rem;
+  padding-inline: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease-in;
+}
+.header__list li:hover {
+  color: #FF8C32;
+}
+.header__list .active {
+  color: #06113C;
+  background-color: #FF8C32;
+}
+.header__list .active:hover {
+  color: #06113C;
 }
 
 .content {
-  background-color: rgba(0, 0, 0, 0.03);
+  display: none;
+  background-color: #DDDDDD;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -63,14 +156,35 @@
 .maingrid {
   display: grid;
   gap: 2rem;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
+@-webkit-keyframes gone {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gone {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .firstcard {
   display: flex;
-  background-color: white;
+  background-color: #EEEEEE;
   border-radius: 1rem;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(6, 17, 60, 0.1764705882);
+  min-height: 15rem;
+  transition: all 0.15s;
+  -webkit-animation: gone 0.5s ease-in-out forwards;
+          animation: gone 0.5s ease-in-out forwards;
 }
 .firstcard__right {
   flex: 3;
@@ -79,11 +193,11 @@
   background-position: center top;
   background-size: cover;
   background-color: lightseagreen;
-  color: white;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  color: #EEEEEE;
+  text-shadow: 0 0 2px #06113C;
 }
 .firstcard__backdrop {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  background-image: linear-gradient(rgba(6, 17, 60, 0.4235294118), rgba(6, 17, 60, 0.8235294118));
   border-radius: 1rem 0 0 1rem;
   padding: 1rem;
   height: 100%;
@@ -109,25 +223,33 @@
 .firstcard__content {
   font-size: 1rem;
 }
+.firstcard:hover {
+  box-shadow: 0 5px 5px rgba(6, 17, 60, 0.1764705882);
+  transform: scale(1.01);
+}
 
 .newscard {
-  background-color: white;
+  background-color: #EEEEEE;
   border-radius: 1rem;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(6, 17, 60, 0.1764705882);
   display: flex;
   flex-direction: column;
+  transition: all 0.15s;
+  -webkit-animation: gone 0.5s ease-in-out forwards;
+          animation: gone 0.5s ease-in-out forwards;
 }
 .newscard__top {
   border-radius: 1rem 1rem 0 0;
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
-  background-color: lightseagreen;
-  color: white;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  background-color: #FF8C32;
+  color: #EEEEEE;
+  text-shadow: 0 0 2px #06113C;
+  min-height: 6rem;
 }
 .newscard__backdrop {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  background-image: linear-gradient(rgba(6, 17, 60, 0.4235294118), rgba(6, 17, 60, 0.8235294118));
   border-radius: 1rem 1rem 0 0;
   padding: 1rem;
 }
@@ -145,4 +267,46 @@
 .newscard__description {
   font-size: 1rem;
   margin: 1rem;
+  color: #06113C;
+}
+.newscard:hover {
+  box-shadow: 0 5px 5px rgba(6, 17, 60, 0.1764705882);
+  transform: scale(1.01);
+}
+
+@media (max-width: 700px) {
+  .start h1 {
+    font-size: 3rem;
+  }
+  .header div {
+    justify-content: space-between;
+  }
+  .header button {
+    display: block;
+  }
+  .header h1 {
+    font-size: 2rem;
+  }
+  .header__list {
+    flex-direction: column;
+  }
+  .header__list--close {
+    display: none;
+  }
+  .firstcard {
+    flex-direction: column;
+  }
+  .firstcard__right {
+    flex: 1;
+    border-radius: 1rem 1rem 0 0;
+  }
+  .firstcard__backdrop {
+    min-height: 20rem;
+  }
+  .firstcard__left {
+    flex: 1;
+  }
+  .firstcard__backdrop {
+    border-radius: 1rem 1rem 0 0;
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -1,47 +1,130 @@
+$primary : #EEEEEE;
+$secondary: #DDDDDD;
+$font-primary: #06113C;
+$orange: #FF8C32;
+$primary-shadow : 0 0 5px #06113C2d;
+$secondary-shadow: 0 5px 5px #06113C2D;
+$text-shadow: 0 0 2px #06113C;
+$mobile: 700px ;
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: $font-primary;
+    
+    &:visited {
+        color: $font-primary; 
+    }
+}
+
+.main {
+    color: $font-primary;
+}
+
+@keyframes firstclick {
+    from {
+        height: 100vh;
+    }
+
+    to {
+        height: 0vh;
+        display: none;
+    }
 }
 
 .start {
+    position: relative;
     height: 100vh;
     width: 100%;
-    background-image: linear-gradient(lightseagreen,darkblue);
     display: flex;
     align-items: flex-end;
-    color: white;
-    text-shadow: 0 0 2px rgba(0,0,0,0.5);
+    color: $primary;
+    text-shadow: $text-shadow;
+    background-image: url("/assets/City\ -\ 18241.mp4");
 
-    div {
+    video {
+        position: absolute;
+        object-fit: cover;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    &__backdrop {
+        position: absolute;
+        background-image: linear-gradient(#06113C00,#06113CFF);
+        height: 100%;
+        width: 100%;
+    }
+
+    &__content {
+        position: absolute;
         margin: 3rem;
     }
 
     h1 {
+        color: $orange;
         font-size: 5rem;
         margin-bottom: 1rem;
+        font-family: 'Righteous', cursive;
     }
 
     p {
         font-size: 1rem;
-        width: 10rem;
+        max-width: 15rem;
+    }
+
+    &--close {
+        animation: firstclick 3s forwards ease-in-out;
+    }
+}
+
+.page {
+    display: none;
+
+    &--active {
+        display: inline;
     }
 }
 
 .header {
-    background-color: white;
+    background-color: $font-primary;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: $primary-shadow;
+    color: $primary;
 
-    h1 {
-        font-size: 4rem;
-        margin: 1rem;
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        gap: 1rem;
+        width: 100%;
     }
 
-    ul {
+    button {
+        color: $orange;
+        display: none;
+        font-size: 2rem;
+        background: none;
+        border: none;
+    }
+
+    h1 {
+        color: $orange;
+        cursor: pointer;
+        font-size: 4rem;
+        font-family: 'Righteous', cursive;
+    }
+
+    &__list {
         width: 100%;
         list-style: none;
         display: flex;
@@ -54,13 +137,31 @@
             align-items: center;
             justify-content: center;
             font-size: 1rem;
-            padding: 0.5rem;
+            height: 3rem;
+            min-height: 2.5rem;
+            padding-inline: 1rem;
+            cursor: pointer;
+            transition: all 0.15s ease-in;
+
+            &:hover {
+                color: $orange;
+            }
+        }
+
+        .active {
+            color: $font-primary;
+            background-color: $orange;
+            
+            &:hover {
+                color: $font-primary;
+            }
         }
     }
 }
 
 .content {
-    background-color: rgba(0,0,0,0.03);
+    display: none;
+    background-color: $secondary;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -70,14 +171,26 @@
 .maingrid {
     display: grid;
     gap: 2rem;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+}
+
+@keyframes gone {
+    from {
+        opacity: 0.6;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .firstcard {
     display: flex;
-    background-color: white;
+    background-color: $primary;
     border-radius: 1rem;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: $primary-shadow;
+    min-height: 15rem;
+    transition: all 0.15s;
+    animation: gone 0.5s ease-in-out forwards;
 
     &__right {
         flex: 3;
@@ -86,12 +199,13 @@
         background-position: center top;
         background-size: cover;
         background-color: lightseagreen;
-        color: white;
-        text-shadow: 0 0 2px rgba(0,0,0,0.5);
+        color: $primary;
+        text-shadow: $text-shadow
+        ;
     }
 
     &__backdrop {
-        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.7));
+        background-image: linear-gradient(#06113C6C,#06113CD2);
         border-radius: 1rem 0 0 1rem;
         padding: 1rem;
         height: 100%;
@@ -114,7 +228,7 @@
     &__left {
         flex: 2;
         margin: 1rem;
-    };
+    }
 
     &__description {
         margin-bottom: 1rem;
@@ -123,27 +237,35 @@
     &__content {
         font-size: 1rem;
     }
+
+    &:hover {
+        box-shadow: $secondary-shadow;
+        transform: scale(1.01);
+    }
 }
 
 .newscard {
-    background-color: white;
+    background-color: $primary;
     border-radius: 1rem;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: $primary-shadow;
     display: flex;
     flex-direction: column;
+    transition: all 0.15s;
+    animation: gone 0.5s ease-in-out forwards;
 
     &__top {
         border-radius: 1rem 1rem 0 0;
         background-repeat: no-repeat;
         background-position: center top;
         background-size: cover;
-        background-color: lightseagreen; 
-        color: white;
-        text-shadow: 0 0 2px rgba(0,0,0,0.5);
+        background-color: $orange; 
+        color: $primary;
+        text-shadow: $text-shadow;
+        min-height: 6rem;
     }
 
     &__backdrop {
-        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.7));
+        background-image: linear-gradient(#06113C6C,#06113CD2);
         border-radius: 1rem 1rem 0 0;
         padding: 1rem;
     }
@@ -165,5 +287,63 @@
     &__description {
         font-size: 1rem;
         margin: 1rem;
+        color: $font-primary;
+    }
+
+    &:hover {
+        box-shadow: $secondary-shadow;
+        transform: scale(1.01);
+    }
+}
+
+@media (max-width: $mobile) {
+    .start {
+        h1 {
+            font-size: 3rem;
+        }
+    }
+
+    .header {
+        div {
+            justify-content: space-between;
+        }
+
+        button {
+            display: block;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        &__list {
+            flex-direction: column;
+
+            &--close {
+                display: none;
+            }
+        }
+    }
+
+    .firstcard {
+        flex-direction: column;
+
+        &__right {
+            flex: 1;
+            border-radius: 1rem 1rem 0 0;
+            
+        }
+
+        &__backdrop {
+            min-height: 20rem;
+        }
+
+        &__left {
+            flex: 1;
+        }
+
+        &__backdrop {
+            border-radius: 1rem 1rem 0 0;
+        }
     }
 }

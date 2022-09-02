@@ -3,25 +3,79 @@ var requestOptions = {
     method: 'GET',
     redirect: 'follow'
 };
-  
+
+document.querySelector(".start").addEventListener("click",
+    function () {
+        document.querySelector(".page").classList.add("page--active");
+        this.classList.add("start--close");
+    }
+)
+
+function header() {
+    const header = document.querySelector("header");
+    const heading = header.querySelector("h1");
+    const btn_list = header.querySelectorAll("li");
+    const btn = header.querySelector("button");
+    const list = header.querySelector("ul");
+    
+    btn_list.forEach(
+        (element) => {
+            element.addEventListener("click",
+                async function () {
+                    btn_list.forEach(btn => btn.classList.remove("active"));
+                    this.classList.add("active");
+                    response = await fetch(`https://saurav.tech/NewsAPI/top-headlines/category/${this.innerText}/in.json`,requestOptions);
+                    article__array(response);
+                }
+            )
+        }
+    )
+
+    heading.addEventListener("click",
+        function () {
+            btn_list.forEach(btn => btn.classList.remove("active"));
+            fetch_everything();
+        }
+    )
+
+    btn.addEventListener("click",
+        function () {
+            list.classList.toggle("header__list--close");
+            if( this.innerText == "menu")
+            {
+                this.innerText = "close";
+            }
+            else {
+                this.innerText = "menu";
+            }
+        }
+    )
+}
+
 async function fetch_everything() {
-    let response = await fetch("https://saurav.tech/NewsAPI/everything/cnn.json", requestOptions);
-    result = await response.text();
-    result_json = JSON.parse(result);
+    const response = await fetch("https://saurav.tech/NewsAPI/everything/cnn.json", requestOptions);
+    article__array(response);
+}
+  
+async function article__array(response) {
+    const result = await response.text();
+    const result_json = JSON.parse(result);
     render(result_json.articles);
 }
 
 function render(articles){
     card_grid = document.querySelector(".maingrid");
-    content = document.querySelector(".content")
-    content.insertAdjacentHTML("afterbegin", firstcard(articles[0]));
-    card_grid.insertAdjacentHTML("beforeend", articles.slice(1,).map(newscard).join(''));
+    content = document.querySelector(".content");
+    card_container = document.querySelector(".cardcontainer");
+    card_container.innerHTML = firstcard(articles[0]);
+    card_grid.innerHTML = articles.slice(1,).map(newscard).join('');
 }
 
 function newscard (article) {
-    date_and_time = article.publishedAt.match(/([\d-]{10})T([\d:]{5})/);
+    const date_and_time = article.publishedAt.match(/([\d-]{10})T([\d:]{5})/);
+
     return `
-        <div class="newscard">
+        <a class="newscard" href="${article.url}" target="_blank">
             <div class="newscard__top" style="background-image: url(${article.urlToImage})" >
                 <div class="newscard__backdrop">
                     <div class="newscard__datetime">
@@ -40,14 +94,14 @@ function newscard (article) {
             <p class="newscard__description">
                 ${article.description}
             </p>
-        </div>
+        </a>
     `
 }
 
 function firstcard (article) {
     date_and_time = article.publishedAt.match(/([\d-]{10})T([\d:]{5})/);
     return `
-    <div class="firstcard">
+    <a class="firstcard" href="${article.url}" target="_blank">
         <div class="firstcard__right" style="background-image: url(${article.urlToImage})">
             <div class="firstcard__backdrop">
                 <div class="firstcard__datetime">
@@ -68,8 +122,9 @@ function firstcard (article) {
                 ${article.description}
             </p>
         </div>
-    </div>
+    </a>
     `
 }
 
 fetch_everything();
+header();
